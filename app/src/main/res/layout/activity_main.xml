@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Main layout using ConstraintLayout -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp">
+
+    <!-- App Title -->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Input field for entering amount -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/amountLayout"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:hint="@string/enter_amount"
+
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Label: From Currency -->
+    <TextView
+        android:id="@+id/labelFrom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/from_currency"
+        android:textAppearance="?attr/textAppearanceLabelLarge"
+
+        app:layout_constraintTop_toBottomOf="@id/amountLayout"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Dropdown for selecting source currency -->
+    <Spinner
+        android:id="@+id/fromCurrency"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+
+        app:layout_constraintTop_toBottomOf="@id/labelFrom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Label: To Currency -->
+    <TextView
+        android:id="@+id/labelTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/to_currency"
+        android:textAppearance="?attr/textAppearanceLabelLarge"
+
+        app:layout_constraintTop_toBottomOf="@id/fromCurrency"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Dropdown for selecting target currency -->
+    <Spinner
+        android:id="@+id/toCurrency"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+
+        app:layout_constraintTop_toBottomOf="@id/labelTo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Button to trigger conversion -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/convertButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:onClick="convert"
+        android:padding="12dp"
+        android:text="@string/convert"
+
+        app:layout_constraintTop_toBottomOf="@id/toCurrency"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Card view to display conversion result -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/resultCard"
+        style="?attr/materialCardViewElevatedStyle"
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+
+        app:cardCornerRadius="12dp"
+        app:layout_constraintTop_toBottomOf="@id/convertButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Result Text -->
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="24dp"
+            android:text="@string/result_text"
+            android:textAppearance="?attr/textAppearanceHeadlineSmall" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Button to open settings screen -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/settingsButton"
+        style="@style/Widget.Material3.Button.TextButton"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="openSettings"
+        android:text="@string/settings"
+
+        app:icon="@android:drawable/ic_menu_preferences"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
